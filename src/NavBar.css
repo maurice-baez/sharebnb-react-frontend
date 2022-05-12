@@ -1,0 +1,17 @@
+.NavBar {
+    background-color: rgb(240, 93, 67);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+    color: whitesmoke;
+  }
+
+  .nav-link.active {
+    color: white;
+  }
+
+  .navbar-brand {
+    color: white;
+  }
+
+  .nav-link {
+      color: whitesmoke;
+  }
