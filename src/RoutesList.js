@@ -14,7 +14,7 @@ import LoginForm from "./LoginForm";
  * Visiting a non-existent route navigates to the homepage.
  */
 
-function RoutesList() {
+function RoutesList({login, addListing }) {
   console.debug("Routes");
 
   return (
@@ -22,9 +22,9 @@ function RoutesList() {
       <Routes>
         <Route path="/" element={<Homepage />}/>
         <Route path="/signup" element={<SignupForm />}/>
-        <Route path="/login" element={<LoginForm />}/>
+        <Route path="/login" element={<LoginForm login={login} />}/>
         <Route path="/listings" element={<ListingsList />}/>
-        <Route path="/listings/new" element={<NewListingForm />}/>
+        <Route path="/listings/new" element={<NewListingForm addListing={addListing} />}/>
         <Route path="/profile" element={<Profile />}/>
         <Route element={<Navigate to="/" /> } />
       </Routes>

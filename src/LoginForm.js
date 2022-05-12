@@ -36,7 +36,7 @@ function LoginForm({ login }) {
     evt.preventDefault();
     try {
       await login(formData);
-      navigate("/homepage")
+      navigate("/")
     } catch (err) {
       setFormErrors(err);
     }
