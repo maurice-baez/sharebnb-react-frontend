@@ -51,8 +51,8 @@ function App() {
     setToken(token);
   }
 
-  async function signup(formData) {
-      const token = await SharebnbApi.register(formData);
+  async function signup(formData, files) {
+      const token = await SharebnbApi.signup(formData, files);
       setToken(token);
     }
 
