@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5001";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
 
 /** API Class.
  *
@@ -67,6 +67,13 @@ class SharebnbApi {
   static async getListingDetail(id) {
     let res = await this.request(`listings/${id}`);
     return res.listing;
+  }
+
+  /** Get messages by username. */
+
+  static async getMessages(username) {
+    let res = await this.request(`users/${username}/messages`);
+    return res.messages;
   }
 
 }
