@@ -9,7 +9,7 @@ import LoadingSpinner from "./LoadingSpinner";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [token, setToken] = useState(localStorage.token);
 
   // Load user info from API. Until a user is logged in and they have a token,
@@ -21,6 +21,7 @@ function App() {
       console.debug("use effect, token=", token)
 
       async function getUser() {
+      
         // only get user if a token is stored
         if (token) {
           // store token from login/register process to SharebnbApi class and localStorage
@@ -29,12 +30,12 @@ function App() {
 
           const { username } = decode(token);
           const currentUser = await SharebnbApi.getCurrentUser(username);
-
-          setCurrentUser(currentUser);
+          // if(!currentUser){
+            setCurrentUser(currentUser);
+          // }
         }
         setIsLoading(false);
       }
-      setIsLoading(true);
       getUser();
     },
     [token]
@@ -80,7 +81,6 @@ function App() {
       <div className="App">
         <NavBar logout={logout} search={search} />
         <RoutesList
-          currentUser={currentUser}
           signup={signup}
           login={login}
           addListing={addListing}

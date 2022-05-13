@@ -14,14 +14,18 @@ import { useNavigate } from "react-router-dom";
 
 function SignupForm({ signup }) {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-  });
+  const [files, setFiles] = useState([]);
+  const [formData, setFormData] = useState(new FormData());
   const [formErrors, setFormErrors] = useState([]);
+
+  // {
+  //   username: "",
+  //   password: "",
+  //   firstName: "",
+  //   lastName: "",
+  //   email: "",
+  //   image: []
+  // }
 
   /** Handle form submit:
    *
@@ -30,8 +34,9 @@ function SignupForm({ signup }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
+      files.foreach(formData.append(filename, file ));
       await signup(formData);
-      navigate("/companies")
+      navigate("/")
     } catch (err) {
       setFormErrors(err);
     }
@@ -39,8 +44,16 @@ function SignupForm({ signup }) {
 
   /** Update form data field */
   function handleChange(evt) {
-    const { name, value } = evt.target;
-    setFormData(data => ({ ...data, [name]: value }));
+    //evt.target.files []
+    if (formData.image){
+      const uploadFiles = evt.target.files;
+      setFiles(files => [...files, uploadFiles])
+    } else{
+      const { name, value } = evt.target;
+      setFormData(data => ({ ...data, [name]: value }));
+    }
+    console.log(files);
+    console.log(formData);
   }
 
   return (
@@ -104,6 +117,7 @@ function SignupForm({ signup }) {
                   type="file"
                   name="image"
                   id="image"
+                  multiple
                   value={formData.image}
                   onChange={handleChange}
                 />
