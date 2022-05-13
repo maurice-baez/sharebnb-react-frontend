@@ -7,22 +7,26 @@ function NewListingForm({ addListing }) {
     description: "",
     location: "",
     type: "house",
-    pricePerNight: "",
-    image: null
+    price_per_night: ""
   };
-
+  const [files, setFiles] = useState([]);
   const [formData, setFormData] = useState(initialFormData);
 
-  function handleSubmit() {
-    addListing(formData);
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+    await addListing(formData, files);
   }
 
   function handleChange(evt) {
-    const { name, value } = evt.target;
-    setFormData((f) => ({
-      ...f,
-      [name]: value,
-    }));
+    if (evt.target.files){
+      const uploadFiles = evt.target.files;
+      setFiles([...uploadFiles]);
+
+    } else{
+      const { name, value } = evt.target;
+      setFormData(data => ({ ...data, [name]: value }));
+    }
+    
   }
 
   return (
@@ -84,9 +88,9 @@ function NewListingForm({ addListing }) {
               <div className="mb-3">
                 <label className="form-label">Price per night</label>
                 <input
-                  name="price"
+                  name="price_per_night"
                   className="form-control"
-                  value={formData.price}
+                  value={formData.price_per_night}
                   onChange={handleChange}
                 />
               </div>
@@ -96,7 +100,7 @@ function NewListingForm({ addListing }) {
                   type="file"
                   name="image"
                   id="image"
-                  value={formData.images}
+                  multiple
                   onChange={handleChange}
                 />
               </div>

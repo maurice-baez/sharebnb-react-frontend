@@ -57,6 +57,16 @@ class SharebnbApi {
     let res = await this.request(`signup`, reqForm, "post", {"Content-type": "multipart/form-data"});
     return res.token;
   }
+  
+  /** Add new Listing. */
+
+  static async addListing(formData, files) {
+    let reqForm = new FormData();
+    files.forEach(file => reqForm.append("image", file));
+    Object.entries(formData).forEach(entry => reqForm.append(entry[0], entry[1]));
+    let res = await this.request(`listings`, reqForm, "post", {"Content-type": "multipart/form-data"});
+    return res.listing;
+  }
 
   /** Get listings (filtered by title/description/ if not undefined) */
 
@@ -80,12 +90,6 @@ class SharebnbApi {
     return res.messages;
   }
 
-  /** Get messages by username. */
-
-  static async addListing(formData) {
-    let res = await this.request(`listings`, formData, "post");
-    return res.listing;
-  }
 
 }
 
