@@ -42,8 +42,8 @@ function App() {
   );
 
 
-  async function addListing(formData) {
-    await SharebnbApi.addListing(formData);
+  async function addListing(formData, files) {
+    await SharebnbApi.addListing(formData, files);
   }
 
   async function login(loginData) {

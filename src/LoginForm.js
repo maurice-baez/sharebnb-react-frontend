@@ -36,9 +36,7 @@ function LoginForm({ login }) {
     evt.preventDefault();
     try {
       await login(formData);
-      debugger
       navigate("/");
-      debugger
     } catch (errs) {
       console.log("errors is:", errs);
       // setFormErrors([...errs]);
