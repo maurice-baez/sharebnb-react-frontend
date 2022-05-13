@@ -17,7 +17,6 @@ import UserContext from "./UserContext";
 function RoutesList({ login, signup, addListing }) {
   console.debug("Routes");
   const { currentUser } = useContext(UserContext);
-  debugger
   return (
     <div className="pt-5">
       <Routes>

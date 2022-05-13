@@ -12,11 +12,12 @@ class SharebnbApi {
 
   static token;
 
-  static async request(endpoint, data = {}, method = "get") {
+  static async request(endpoint, data = {}, method = "get", {type} = {}) {
     console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { token: SharebnbApi.token };
+    const headers = { token: SharebnbApi.token,
+                    type };
     const params = (method === "get")
       ? data
       : {};
@@ -49,8 +50,11 @@ class SharebnbApi {
 
   /** Signup for site. */
 
-  static async signup(data) {
-    let res = await this.request(`auth/register`, data, "post");
+  static async signup(formData, files) {
+    let reqForm = new FormData();
+    reqForm.append("image", files);
+    Object.entries(formData).forEach(entry => reqForm.append(entry[0], entry[1]));
+    let res = await this.request(`signup`, reqForm, "post", {"Content-type": "multipart/form-data"});
     return res.token;
   }
 
