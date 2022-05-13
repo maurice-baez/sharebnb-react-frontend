@@ -5,15 +5,15 @@ import NavBar from "./NavBar";
 import SharebnbApi from "./api";
 import decode from "jwt-decode";
 import UserContext from "./UserContext";
-
+import LoadingSpinner from "./LoadingSpinner";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
     data: null,
-    infoLoaded: false,
   });
+  const [isLoading, setIsLoading] = useState(true);
 
-  const [token, setToken] = useState(window.localStorage.token);
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   // Load user info from API. Until a user is logged in and they have a token,
   // this should not run. It only needs to re-run when a user logs out, so
@@ -25,26 +25,25 @@ function App() {
 
       async function getCurrentUser() {
         if (token) {
-          try {
-            let { username } = decode(token);
-            // put the token on the Api class so it can use it to call the API.
-            SharebnbApi.token = token;
-            let currentUser = await SharebnbApi.getCurrentUser(username);
-
-            setCurrentUser({
-              infoLoaded: true,
-              data: currentUser,
-            });
-          } catch (err) {
-            console.error("App loadUserInfo: problem loading", err);
-            setCurrentUser({
-              infoLoaded: true,
-              data: null,
-            });
-          }
+          let { username } = decode(token);
+          // put the token on the Api class so it can use it to call the API.
+          let currentUser = await SharebnbApi.getCurrentUser(username);
+          SharebnbApi.token = token;
+          setCurrentUser({
+            data: currentUser,
+          });
+          localStorage.setItem("token", token);
+          setIsLoading(false);
+        } else {
+          setIsLoading(false);
         }
       }
       getCurrentUser();
+      // if (token && isLoading === true) {
+      //   getCurrentUser();
+      // }else{
+      //   setIsLoading(false)
+      // }
     },
     [token]
   );
@@ -58,18 +57,31 @@ function App() {
 
   function signup(formData) {}
 
-  function logout() {}
+  /** Handles site-wide logout. */
+  function logout() {
+    setCurrentUser({
+      data: null,
+    });
+    setToken(null);
+    localStorage.clear();
+  }
+
+  if (isLoading) return <LoadingSpinner />;
 
   return (
     <UserContext.Provider
       value={{
         currentUser: currentUser.data,
-        setCurrentUser
+        setCurrentUser,
       }}
     >
       <div className="App">
-        <NavBar />
-        <RoutesList login={login} addListing={addListing} />
+        <NavBar logout={logout} />
+        <RoutesList
+          currentUser={currentUser.data}
+          login={login}
+          addListing={addListing}
+        />
       </div>
     </UserContext.Provider>
   );

@@ -18,7 +18,7 @@ function ListingsList(){
     <div>
       <ul>
         {listings.map(l =>
-          <li>{l.title}</li>
+          <li key={l.id}>{l.title}</li>
         )}
       </ul>
     </div>
