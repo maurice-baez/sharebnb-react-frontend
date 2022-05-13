@@ -1,0 +1,11 @@
+.ListingDetail-img {
+    border-radius: 25px;
+    height: 600px;
+    width: 750px;
+    margin-right: 10px;
+}
+
+.ListingDetail-card {
+    height: 600px;
+    margin-left: 10px;
+}
