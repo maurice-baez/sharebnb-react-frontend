@@ -6,33 +6,43 @@ import NewListingForm from "./NewListingForm";
 import Profile from "./Profile";
 import SignupForm from "./SignupForm";
 import LoginForm from "./LoginForm";
-
-
+import { useContext } from "react";
+import UserContext from "./UserContext";
 
 /** Site-wide routes.
  *
  * Visiting a non-existent route navigates to the homepage.
  */
 
-function RoutesList({login, addListing, currentUser }) {
+function RoutesList({ login, signup, addListing }) {
   console.debug("Routes");
+  const { currentUser } = useContext(UserContext);
 
   return (
     <div className="pt-5">
       <Routes>
-        {!currentUser &&
-        <>
-        <Route path="/" element={<Homepage />}/>
-        <Route path="/signup" element={<SignupForm />}/>
-        <Route path="/login" element={<LoginForm login={login} />}/>
-        <Route path="/listings" element={<ListingsList />}/>
-        </>
-}
-        <Route path="/listings/new" element={<NewListingForm addListing={addListing} />}/>
-        <Route path="/profile" element={<Profile />}/>
-        <Route path="*" element={<Navigate to="/" /> } />
+        {/* unprotected routes */}
+        {/* {!currentUser && (
+          <> */}
+            <Route path="/" element={<Homepage />} />
+            <Route path="/signup" element={<SignupForm signup={signup} />} />
+            <Route path="/login" element={<LoginForm login={login} />} />
+            <Route path="/listings" element={<ListingsList />} />
+          {/* </>
+        )} */}
 
+        {/* protected routes */}
+        {/* {currentUser && (
+          <> */}
+            <Route
+              path="/listings/new"
+              element={<NewListingForm addListing={addListing} />}
+            />
+            <Route path="/profile" element={<Profile />} />
+          {/* </>
+        )} */}
 
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
   );

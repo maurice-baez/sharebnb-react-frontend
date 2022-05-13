@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5001";
 
 /** API Class.
  *
@@ -10,7 +10,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
 
 class SharebnbApi {
 
-  static token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Im1iYWV6In0.5_MG8aMPvvmuSBcFIjkotscXsZ6DUPWAY_2XKaV9Z0I"
+  static token;
 
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
@@ -74,6 +74,13 @@ class SharebnbApi {
   static async getMessages(username) {
     let res = await this.request(`users/${username}/messages`);
     return res.messages;
+  }
+
+  /** Get messages by username. */
+
+  static async addListing(formData) {
+    let res = await this.request(`listings`, formData, "post");
+    return res.listing;
   }
 
 }

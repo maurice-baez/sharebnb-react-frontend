@@ -46,7 +46,7 @@ function NavBar({ logout, search }) {
         </li>
         <li className="nav-item me-4">
           <NavLink className="nav-link" to="/signup">
-            Sign Up
+            Signup
           </NavLink>
         </li>
       </ul>
@@ -57,10 +57,10 @@ function NavBar({ logout, search }) {
     <nav className="NavBar navbar navbar-expand-lg">
       <div className="container-fluid d-flex">
         <Link className="navbar-brand col-3" to="/">
-          ShareBnB
+          sharebnb
         </Link>
         <div className="col-6 mt-4">
-          <SearchForm search={search} />
+          <SearchForm searchFor={search} />
         </div>
         <ul className="navbar-nav ms-auto">
           <li className="nav-item me-4">

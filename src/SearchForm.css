@@ -1,0 +1,7 @@
+.btn {
+  font-weight: 300;
+}
+
+.btn:hover {
+  color: rgb(83, 50, 50);
+}

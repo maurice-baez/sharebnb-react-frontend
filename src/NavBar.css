@@ -1,17 +1,45 @@
 .NavBar {
     background-color: rgb(240, 93, 67);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+    border-bottom: 2px solid rgba(219, 195, 195, 0.125);
     color: whitesmoke;
+    font-size: 18px;
+    font-weight:500;
   }
 
   .nav-link.active {
-    color: white;
+    color: rgb(83, 50, 50);
+    background-color: rgb(248, 151, 151);
   }
 
   .navbar-brand {
+    text-align: center;
     color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    max-width: 125px;
+    margin-right: 125px;
+    margin-left: 25px;
+    font-weight: 300;
   }
 
+  .navbar-brand:hover {
+    color: rgb(83, 50, 50);
+
+  }
+
+  .navbar-brand:active {
+    color: rgb(83, 50, 50);
+    background-color: rgb(248, 151, 151);
+ }
+
   .nav-link {
-      color: whitesmoke;
+      text-align: center;
+      color: white;
+      border: 1px solid white;
+      border-radius: 10px;
+      background-color: rgb(240, 93, 67);
+      font-weight: 300;
+  }
+  .nav-link:hover {
+    color: rgb(83, 50, 50);
   }

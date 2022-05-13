@@ -1,0 +1,25 @@
+.Listing-card {
+    max-width: 32em;
+}
+
+.card-img {
+    height: 16em;
+    border-radius: 25px;
+}
+
+.card-body {
+    color: rgb(74, 72, 72);
+}
+
+a {
+    text-decoration: none;
+}
+
+.card-title {
+    font-size:24px;
+}
+
+.card-price {
+    font-weight: bold;
+}
+

@@ -8,12 +8,9 @@ import UserContext from "./UserContext";
 import LoadingSpinner from "./LoadingSpinner";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({
-    data: null,
-  });
-  const [isLoading, setIsLoading] = useState(true);
-
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [token, setToken] = useState(localStorage.token);
 
   // Load user info from API. Until a user is logged in and they have a token,
   // this should not run. It only needs to re-run when a user logs out, so
@@ -21,64 +18,70 @@ function App() {
 
   useEffect(
     function loadUserInfo() {
-      console.debug("App useEffect loadUserInfo", "token=", token);
+      console.debug("use effect, token=", token)
 
-      async function getCurrentUser() {
+      async function getUser() {
+        // only get user if a token is stored
         if (token) {
-          let { username } = decode(token);
-          // put the token on the Api class so it can use it to call the API.
-          let currentUser = await SharebnbApi.getCurrentUser(username);
+          // store token from login/register process to SharebnbApi class and localStorage
           SharebnbApi.token = token;
-          setCurrentUser({
-            data: currentUser,
-          });
-          localStorage.setItem("token", token);
-          setIsLoading(false);
-        } else {
-          setIsLoading(false);
+          localStorage.token = token;
+
+          const { username } = decode(token);
+          const currentUser = await SharebnbApi.getCurrentUser(username);
+
+          setCurrentUser(currentUser);
         }
+        setIsLoading(false);
       }
-      getCurrentUser();
-      // if (token && isLoading === true) {
-      //   getCurrentUser();
-      // }else{
-      //   setIsLoading(false)
-      // }
+      setIsLoading(true);
+      getUser();
     },
     [token]
   );
 
-  function addListing(formData) {}
+
+  async function addListing(formData) {
+    await SharebnbApi.addListing(formData);
+  }
 
   async function login(loginData) {
     const token = await SharebnbApi.login(loginData);
     setToken(token);
   }
 
-  function signup(formData) {}
+  async function signup(formData) {
+      const token = await SharebnbApi.register(formData);
+      setToken(token);
+    }
+
+
+  async function search(searchTerm) {
+    await SharebnbApi.getListings(searchTerm);
+  }
 
   /** Handles site-wide logout. */
-  function logout() {
-    setCurrentUser({
-      data: null,
-    });
-    setToken(null);
-    localStorage.clear();
-  }
+    function logout() {
+      setToken(null);
+      setCurrentUser(null);
+      localStorage.clear();
+    }
+
 
   if (isLoading) return <LoadingSpinner />;
 
   return (
     <UserContext.Provider
       value={{
-        currentUser: currentUser.data,
+        currentUser: currentUser,
         setCurrentUser,
       }}
     >
       <div className="App">
-        <NavBar logout={logout} />
+        <NavBar logout={logout} search={search} />
         <RoutesList
-          currentUser={currentUser.data}
+          currentUser={currentUser}
+          signup={signup}
           login={login}
           addListing={addListing}
         />

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import SharebnbApi from "./api"
+import ListingCard from "./ListingCard";
 
 function ListingsList(){
 
@@ -15,12 +16,12 @@ function ListingsList(){
   }, [])
 
   return (
-    <div>
-      <ul>
+    <div className="ListingsList-container container d-flex">
+      <div className="row">
         {listings.map(l =>
-          <li key={l.id}>{l.title}</li>
+          <div key={l.id} className="col-4"><ListingCard listing={l} /></div>
         )}
-      </ul>
+      </div>
     </div>
   )
 }

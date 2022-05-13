@@ -32,14 +32,15 @@ function LoginForm({ login }) {
    *
    * Calls login func prop and, if not successful, sets errors.
    */
-  async function handleSubmit(evt) {
+   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
       await login(formData);
-      navigate("/")
-    } catch (err) {
-      setFormErrors(err);
+    } catch (errs) {
+      console.log("errors is:", errs);
+      setFormErrors([...errs]);
     }
+    navigate("/");
   }
 
   /** Update form data field */
@@ -85,7 +86,7 @@ function LoginForm({ login }) {
                 : null} */}
 
               <div className="d-grid">
-                <button className="btn btn-secondary" onClick={handleSubmit}>
+                <button className="btn btn-outline-secondary" onClick={handleSubmit}>
                   Submit
                 </button>
               </div>

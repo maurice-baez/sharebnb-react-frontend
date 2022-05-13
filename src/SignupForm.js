@@ -23,13 +23,6 @@ function SignupForm({ signup }) {
   });
   const [formErrors, setFormErrors] = useState([]);
 
-  console.debug(
-    "SignupForm",
-    "signup=", typeof signup,
-    "formData=", formData,
-    "formErrors=", formErrors,
-  );
-
   /** Handle form submit:
    *
    * Calls login func prop and, if not successful, sets errors.
@@ -116,7 +109,7 @@ function SignupForm({ signup }) {
                 />
               </div>
               <div className="d-grid">
-                <button className="btn btn-secondary" onClick={handleSubmit}>
+                <button className="btn btn-outline-secondary" onClick={handleSubmit}>
                   Submit
                 </button>
               </div>
