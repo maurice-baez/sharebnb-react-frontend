@@ -30,13 +30,15 @@ function ListingDetail() {
         className="col-6 ListingDetail-img text-left"
       />
 
-      <div className="col-6 text-center d-flex flex-column card justify-content-center align-items-center">
+      <div className="col-6 text-center d-flex flex-column card justify-content-center listings-card align-items-center">
         <h2 className="text-center mb-4">{listing.title}</h2>
         <h4 className="text-center mb-4">{listing.location}</h4>
         <h4 className="text-center mb-4">{listing.description}</h4>
         <h4 className="text-center mb-4">{listing.type}</h4>
-        <h4 className="text-center mb-4">${listing.price}/per night</h4>
-        <button className="btn btn-outline-danger btn-lg ">Book</button>
+        <h4 className="text-center mb-4">${listing.pricePerNight}/per night</h4>
+        <form className="ListingDetail-form">
+        <button className="btn btn-outline-light btn-lg ">Book</button>
+        </form>
       </div>
     </div>
   );

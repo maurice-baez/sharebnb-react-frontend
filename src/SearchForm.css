@@ -5,3 +5,7 @@
 .btn:hover {
   color: rgb(83, 50, 50);
 }
+
+#btn-search {
+    margin-left: 8px;
+}

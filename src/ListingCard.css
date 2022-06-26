@@ -17,6 +17,9 @@ a {
 
 .card-title {
     font-size:24px;
+    color: white;
+    background-color: rgb(240, 93, 67);
+    border-radius: 25px;
 }
 
 .card-price {

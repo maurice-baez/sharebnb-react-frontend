@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom"
 
 function NewListingForm({ addListing }) {
   const initialFormData = {
@@ -12,9 +12,12 @@ function NewListingForm({ addListing }) {
   const [files, setFiles] = useState([]);
   const [formData, setFormData] = useState(initialFormData);
 
+  const navigate = useNavigate();
+
   async function handleSubmit(evt) {
     evt.preventDefault();
     await addListing(formData, files);
+    navigate("/listings");
   }
 
   function handleChange(evt) {
@@ -26,7 +29,7 @@ function NewListingForm({ addListing }) {
       const { name, value } = evt.target;
       setFormData(data => ({ ...data, [name]: value }));
     }
-    
+
   }
 
   return (
@@ -92,7 +95,7 @@ function NewListingForm({ addListing }) {
                   className="form-control"
                   value={formData.price_per_night}
                   onChange={handleChange}
-                />
+                /> 
               </div>
               <div className="mb-3">
                 <label htmlFor="images">Images</label>

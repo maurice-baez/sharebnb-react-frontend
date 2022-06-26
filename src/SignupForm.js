@@ -24,7 +24,7 @@ function SignupForm({ signup }) {
   });
   const [formErrors, setFormErrors] = useState([]);
 
-  
+
 
   /** Handle form submit:
    *
@@ -50,8 +50,6 @@ function SignupForm({ signup }) {
       const { name, value } = evt.target;
       setFormData(data => ({ ...data, [name]: value }));
     }
-    console.log(files);
-    console.log(formData);
   }
 
   return (

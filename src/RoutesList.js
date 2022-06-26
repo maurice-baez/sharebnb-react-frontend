@@ -6,6 +6,7 @@ import NewListingForm from "./NewListingForm";
 import Profile from "./Profile";
 import SignupForm from "./SignupForm";
 import LoginForm from "./LoginForm";
+import ListingDetail from "./ListingDetail";
 import { useContext } from "react";
 import UserContext from "./UserContext";
 
@@ -23,6 +24,7 @@ function RoutesList({ login, signup, addListing }) {
         {/* unprotected routes */}
         <Route path="/" element={<Homepage />} />
         <Route path="/listings" element={<ListingsList />} />
+        <Route path="/listings/:id" element={<ListingDetail />} />
 
         {!currentUser && (
           <>

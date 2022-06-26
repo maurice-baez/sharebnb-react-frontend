@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
+import "./SearchForm.css";
 
 /** Search form.
  *
@@ -44,7 +45,7 @@ function SearchForm({ searchFor }) {
             />
           </div>
           <div className="col-auto">
-            <button type="submit" className="btn btn-outline-light">
+            <button type="submit" id="btn-search" className="btn btn-outline-light">
               Submit
             </button>
           </div>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5001";
 
 /** API Class.
  *
@@ -23,6 +23,7 @@ class SharebnbApi {
       : {};
 
     try {
+      console.log("url=", url, "method=", method, "data=", data, "params=", params, "headers=", headers);
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
       console.error("API Error:", err.response);
@@ -43,6 +44,7 @@ class SharebnbApi {
   /** Get token for login from username, password. */
 
   static async login(data) {
+    console.log("here in login");
     let res = await this.request(`login`, data, "post");
     console.log("login res=", res)
     return res.token;
@@ -54,10 +56,11 @@ class SharebnbApi {
     let reqForm = new FormData();
     reqForm.append("image", files);
     Object.entries(formData).forEach(entry => reqForm.append(entry[0], entry[1]));
+    console.log("reqForm=", reqForm)
     let res = await this.request(`signup`, reqForm, "post", {"Content-type": "multipart/form-data"});
     return res.token;
   }
-  
+
   /** Add new Listing. */
 
   static async addListing(formData, files) {

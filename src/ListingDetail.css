@@ -9,3 +9,8 @@
     height: 600px;
     margin-left: 10px;
 }
+
+.listings-card {
+   background-color: rgb(240, 93, 67);
+   color:white;
+}

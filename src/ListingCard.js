@@ -16,9 +16,9 @@ function ListingCard({ listing }) {
       <div className="Listing-card">
         <img className="card-img" src={listing.images[0]} alt={listing.title} />
         <div className="card-body">
-          <p className="card-title card-header text-center">{listing.title}</p>
+          <p className="card-title card-header text-center lead">{listing.title}</p>
           <p className="card-location text-center">{listing.location}</p>
-          <p className="card-type text-center">{listing.type}</p>
+          <p className="card-type text-center">Space Type: {listing.type}</p>
           <p className="card-price text-center">${listing.pricePerNight}/per night</p>
         </div>
       </div>
