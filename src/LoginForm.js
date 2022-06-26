@@ -21,24 +21,24 @@ function LoginForm({ login }) {
   });
   const [formErrors, setFormErrors] = useState([]);
 
-  console.debug(
-    "LoginForm",
-    "login=", typeof login,
-    "formData=", formData,
-    "formErrors", formErrors,
-  );
+  // console.debug(
+  //   "LoginForm",
+  //   "login=", typeof login,
+  //   "formData=", formData,
+  //   "formErrors", formErrors,
+  // );
 
   /** Handle form submit:
    *
    * Calls login func prop and, if not successful, sets errors.
    */
-   async function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
     try {
       await login(formData);
       navigate("/");
     } catch (errs) {
-      console.log("errors is:", errs);
+      // console.log("errors is:", errs);
       // setFormErrors([...errs]);
     }
   }
@@ -46,7 +46,7 @@ function LoginForm({ login }) {
   /** Update form data field */
   function handleChange(evt) {
     const { name, value } = evt.target;
-    setFormData(l => ({ ...l, [name]: value }));
+    setFormData((l) => ({ ...l, [name]: value }));
   }
 
   return (
@@ -86,7 +86,10 @@ function LoginForm({ login }) {
                 : null} */}
 
               <div className="d-grid">
-                <button className="btn btn-outline-secondary" onClick={handleSubmit}>
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={handleSubmit}
+                >
                   Submit
                 </button>
               </div>

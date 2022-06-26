@@ -50,9 +50,7 @@ class SharebnbApi {
   /** Get token for login from username, password. */
 
   static async login(data) {
-    console.log("here in login");
     let res = await this.request(`login`, data, "post");
-    console.log("login res=", res);
     return res.token;
   }
 
@@ -64,11 +62,9 @@ class SharebnbApi {
     Object.entries(formData).forEach((entry) =>
       reqForm.append(entry[0], entry[1])
     );
-    debugger;
     let res = await this.request(`signup`, reqForm, "post", {
       "Content-type": "multipart/form-data",
     });
-    console.log("response=", res);
     return res.token;
   }
 

@@ -20,6 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "surge --project ./Users/maurice/rithm_exercises/Week_10/shareBnB/sharebnb-react-frontend/ --domain sharebnb.surge.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
