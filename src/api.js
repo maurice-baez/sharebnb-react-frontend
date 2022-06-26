@@ -9,21 +9,28 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5001";
  */
 
 class SharebnbApi {
-
   static token;
 
-  static async request(endpoint, data = {}, method = "get", {type} = {}) {
+  static async request(endpoint, data = {}, method = "get", { type } = {}) {
     console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { token: SharebnbApi.token,
-                    type };
-    const params = (method === "get")
-      ? data
-      : {};
+    const headers = { token: SharebnbApi.token, type };
+    const params = method === "get" ? data : {};
 
     try {
-      console.log("url=", url, "method=", method, "data=", data, "params=", params, "headers=", headers);
+      console.log(
+        "url=",
+        url,
+        "method=",
+        method,
+        "data=",
+        data,
+        "params=",
+        params,
+        "headers=",
+        headers
+      );
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
       console.error("API Error:", err.response);
@@ -33,7 +40,6 @@ class SharebnbApi {
   }
 
   // Individual API routes
-
 
   /** Get the current user. */
   static async getCurrentUser(username) {
@@ -46,7 +52,7 @@ class SharebnbApi {
   static async login(data) {
     console.log("here in login");
     let res = await this.request(`login`, data, "post");
-    console.log("login res=", res)
+    console.log("login res=", res);
     return res.token;
   }
 
@@ -55,9 +61,14 @@ class SharebnbApi {
   static async signup(formData, files) {
     let reqForm = new FormData();
     reqForm.append("image", files);
-    Object.entries(formData).forEach(entry => reqForm.append(entry[0], entry[1]));
-    console.log("reqForm=", reqForm)
-    let res = await this.request(`signup`, reqForm, "post", {"Content-type": "multipart/form-data"});
+    Object.entries(formData).forEach((entry) =>
+      reqForm.append(entry[0], entry[1])
+    );
+    debugger;
+    let res = await this.request(`signup`, reqForm, "post", {
+      "Content-type": "multipart/form-data",
+    });
+    console.log("response=", res);
     return res.token;
   }
 
@@ -65,9 +76,14 @@ class SharebnbApi {
 
   static async addListing(formData, files) {
     let reqForm = new FormData();
-    files.forEach(file => reqForm.append("image", file));
-    Object.entries(formData).forEach(entry => reqForm.append(entry[0], entry[1]));
-    let res = await this.request(`listings`, reqForm, "post", {"Content-type": "multipart/form-data"});
+    files.forEach((file) => reqForm.append("image", file));
+    Object.entries(formData).forEach((entry) =>
+      reqForm.append(entry[0], entry[1])
+    );
+    console.log("reqForm=", reqForm.entries);
+    let res = await this.request(`listings`, reqForm, "post", {
+      "Content-type": "multipart/form-data",
+    });
     return res.listing;
   }
 
@@ -92,8 +108,6 @@ class SharebnbApi {
     let res = await this.request(`users/${username}/messages`);
     return res.messages;
   }
-
-
 }
 
 export default SharebnbApi;

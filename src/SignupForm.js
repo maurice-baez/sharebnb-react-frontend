@@ -18,13 +18,11 @@ function SignupForm({ signup }) {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
-    firstName: "",
-    lastName: "",
-    email: ""
+    first_name: "",
+    last_name: "",
+    email: "",
   });
   const [formErrors, setFormErrors] = useState([]);
-
-
 
   /** Handle form submit:
    *
@@ -34,7 +32,7 @@ function SignupForm({ signup }) {
     evt.preventDefault();
     try {
       await signup(formData, files);
-      navigate("/")
+      navigate("/");
     } catch (err) {
       setFormErrors(err);
     }
@@ -43,12 +41,12 @@ function SignupForm({ signup }) {
   /** Update form data field */
   function handleChange(evt) {
     //evt.target.files []
-    if (evt.target.files){
+    if (evt.target.files) {
       const uploadFiles = evt.target.files;
-      setFiles(uploadFiles[0])
-    } else{
+      setFiles(uploadFiles[0]);
+    } else {
       const { name, value } = evt.target;
-      setFormData(data => ({ ...data, [name]: value }));
+      setFormData((data) => ({ ...data, [name]: value }));
     }
   }
 
@@ -82,18 +80,18 @@ function SignupForm({ signup }) {
               <div className="mb-3">
                 <label className="form-label">First name</label>
                 <input
-                  name="firstName"
+                  name="first_name"
                   className="form-control"
-                  value={formData.firstName}
+                  value={formData.first_name}
                   onChange={handleChange}
                 />
               </div>
               <div className="mb-3">
                 <label className="form-label">Last name</label>
                 <input
-                  name="lastName"
+                  name="last_name"
                   className="form-control"
-                  value={formData.lastName}
+                  value={formData.last_name}
                   onChange={handleChange}
                 />
               </div>
@@ -118,7 +116,10 @@ function SignupForm({ signup }) {
                 />
               </div>
               <div className="d-grid">
-                <button className="btn btn-outline-secondary" onClick={handleSubmit}>
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={handleSubmit}
+                >
                   Submit
                 </button>
               </div>
