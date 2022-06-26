@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 function SignupForm({ signup }) {
   const navigate = useNavigate();
-  const [files, setFiles] = useState([]);
+  // const [files, setFiles] = useState([]);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -22,7 +22,7 @@ function SignupForm({ signup }) {
     last_name: "",
     email: "",
   });
-  const [formErrors, setFormErrors] = useState([]);
+  // const [formErrors, setFormErrors] = useState([]);
 
   /** Handle form submit:
    *
@@ -31,23 +31,24 @@ function SignupForm({ signup }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
-      await signup(formData, files);
+      await signup(formData);
       navigate("/");
     } catch (err) {
-      setFormErrors(err);
+      console.log("err is=", err);
+      // setFormErrors(err);
     }
   }
 
   /** Update form data field */
   function handleChange(evt) {
     //evt.target.files []
-    if (evt.target.files) {
-      const uploadFiles = evt.target.files;
-      setFiles(uploadFiles[0]);
-    } else {
-      const { name, value } = evt.target;
-      setFormData((data) => ({ ...data, [name]: value }));
-    }
+    // if (evt.target.files) {
+    //   const uploadFiles = evt.target.files;
+    //   setFiles(uploadFiles[0]);
+    // } else {
+    const { name, value } = evt.target;
+    setFormData((data) => ({ ...data, [name]: value }));
+    // }
   }
 
   return (
@@ -105,7 +106,7 @@ function SignupForm({ signup }) {
                   onChange={handleChange}
                 />
               </div>
-              <div className="mb-3">
+              {/* <div className="mb-3">
                 <label htmlFor="images">Profile Image</label>
                 <input
                   type="file"
@@ -114,7 +115,7 @@ function SignupForm({ signup }) {
                   multiple
                   onChange={handleChange}
                 />
-              </div>
+              </div> */}
               <div className="d-grid">
                 <button
                   className="btn btn-outline-secondary"

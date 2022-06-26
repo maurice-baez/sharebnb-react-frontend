@@ -7,10 +7,14 @@ import decode from "jwt-decode";
 import UserContext from "./UserContext";
 import LoadingSpinner from "./LoadingSpinner";
 
+const LOCAL_STORAGE_TOKEN_KEY = "token";
+
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [token, setToken] = useState(localStorage.token);
+  const [token, setToken] = useState(
+    localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY)
+  );
 
   // Load user info from API. Until a user is logged in and they have a token,
   // this should not run. It only needs to re-run when a user logs out, so
@@ -18,23 +22,26 @@ function App() {
 
   useEffect(
     function loadUserInfo() {
-      console.debug("use effect, token=", token);
-
       async function getUser() {
         // only get user if a token is stored
         if (token) {
-          // store token from login/register process to SharebnbApi class and localStorage
-          SharebnbApi.token = token;
-          localStorage.token = token;
-
-          const { username } = decode(token);
-          const currentUser = await SharebnbApi.getCurrentUser(username);
-          // if(!currentUser){
-          setCurrentUser(currentUser);
-          // }
+          try {
+            console.log("here in try");
+            const { username } = decode(token);
+            // store token from login/register process to SharebnbApi class
+            SharebnbApi.token = token;
+            localStorage[LOCAL_STORAGE_TOKEN_KEY] = token;
+            const currentUser = await SharebnbApi.getCurrentUser(username);
+            setCurrentUser(currentUser);
+            setIsLoading(false);
+          } catch (err) {
+            console.error("App loadUserInfo: problem loading", err);
+            logout();
+          }
         }
         setIsLoading(false);
       }
+      setIsLoading(true);
       getUser();
     },
     [token]
@@ -45,13 +52,11 @@ function App() {
   }
 
   async function login(loginData) {
-    setIsLoading(true);
     const token = await SharebnbApi.login(loginData);
     setToken(token);
   }
 
   async function signup(formData, files) {
-    setIsLoading(true);
     const token = await SharebnbApi.signup(formData, files);
     setToken(token);
   }

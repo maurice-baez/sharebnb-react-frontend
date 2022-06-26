@@ -56,15 +56,9 @@ class SharebnbApi {
 
   /** Signup for site. */
 
-  static async signup(formData, files) {
-    let reqForm = new FormData();
-    reqForm.append("image", files);
-    Object.entries(formData).forEach((entry) =>
-      reqForm.append(entry[0], entry[1])
-    );
-    let res = await this.request(`signup`, reqForm, "post", {
-      "Content-type": "multipart/form-data",
-    });
+  static async signup(data) {
+    console.log("data=", data);
+    let res = await this.request(`signup`, data, "post");
     return res.token;
   }
 
