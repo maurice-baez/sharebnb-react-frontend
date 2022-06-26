@@ -18,10 +18,9 @@ function App() {
 
   useEffect(
     function loadUserInfo() {
-      console.debug("use effect, token=", token)
+      console.debug("use effect, token=", token);
 
       async function getUser() {
-      
         // only get user if a token is stored
         if (token) {
           // store token from login/register process to SharebnbApi class and localStorage
@@ -31,7 +30,7 @@ function App() {
           const { username } = decode(token);
           const currentUser = await SharebnbApi.getCurrentUser(username);
           // if(!currentUser){
-            setCurrentUser(currentUser);
+          setCurrentUser(currentUser);
           // }
         }
         setIsLoading(false);
@@ -41,33 +40,32 @@ function App() {
     [token]
   );
 
-
   async function addListing(formData, files) {
     await SharebnbApi.addListing(formData, files);
   }
 
   async function login(loginData) {
+    setIsLoading(true);
     const token = await SharebnbApi.login(loginData);
     setToken(token);
   }
 
   async function signup(formData, files) {
-      const token = await SharebnbApi.signup(formData, files);
-      setToken(token);
-    }
-
+    setIsLoading(true);
+    const token = await SharebnbApi.signup(formData, files);
+    setToken(token);
+  }
 
   async function search(searchTerm) {
     await SharebnbApi.getListings(searchTerm);
   }
 
   /** Handles site-wide logout. */
-    function logout() {
-      setToken(null);
-      setCurrentUser(null);
-      localStorage.clear();
-    }
-
+  function logout() {
+    setToken(null);
+    setCurrentUser(null);
+    localStorage.clear();
+  }
 
   if (isLoading) return <LoadingSpinner />;
 
@@ -80,11 +78,7 @@ function App() {
     >
       <div className="App">
         <NavBar logout={logout} search={search} />
-        <RoutesList
-          signup={signup}
-          login={login}
-          addListing={addListing}
-        />
+        <RoutesList signup={signup} login={login} addListing={addListing} />
       </div>
     </UserContext.Provider>
   );
