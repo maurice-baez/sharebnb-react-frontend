@@ -19,13 +19,13 @@
 
 /* Media Queries */
 
-@media (max-width: 1023px) {
+@media (max-width: 1223px) {
   .listing__card {
     max-width: 33%;
   }
 }
 
-@media (max-width: 852px) {
+@media (max-width: 950px) {
   .listing__card {
     max-width: 50%;
   }
@@ -33,6 +33,6 @@
 
 @media (max-width: 767px) {
   .listing__card {
-    max-width: 50%;
+    max-width: 100%;
   }
 }
