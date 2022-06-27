@@ -33,6 +33,6 @@
 
 @media (max-width: 767px) {
   .listing__card {
-    max-width: 100%;
+    min-width: 100%;
   }
 }
