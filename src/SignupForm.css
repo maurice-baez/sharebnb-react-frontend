@@ -1,8 +1,29 @@
-.card {
-    border-radius: 25px;
-
+.card__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.btn {
-    border-radius: 10px;
+.signup__card {
+  border-radius: 25px;
+  width: 50%;
+}
+
+.signup__btn {
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.signup__btn:hover {
+  background-color: var(--white-color);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+@media (max-width: 767px) {
+  .signup__card {
+    width: 75%;
+  }
 }

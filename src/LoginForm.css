@@ -23,7 +23,7 @@
 }
 
 @media (max-width: 767px) {
-  .card {
+  .login__card {
     width: 75%;
   }
 }
