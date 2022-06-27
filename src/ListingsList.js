@@ -17,11 +17,15 @@ function ListingsList() {
 
   return (
     <div className="container listings__container">
-      {listings.map((l) => (
-        <div key={l.id} className="listing__card">
-          <ListingCard listing={l} />
-        </div>
-      ))}
+      {listings ? (
+        listings.map((l) => (
+          <div key={l.id} className="listing__card">
+            <ListingCard listing={l} />
+          </div>
+        ))
+      ) : (
+        <div>Error loading listings</div>
+      )}
     </div>
   );
 }
