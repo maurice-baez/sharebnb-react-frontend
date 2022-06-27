@@ -23,24 +23,32 @@ function ListingDetail() {
   if (isLoading) return <i>Loading...</i>;
 
   return (
-    <div className="container d-flex ListingDetail-card">
-      <img
-        src={listing.images[0]}
-        alt={listing.title}
-        className="col-6 ListingDetail-img text-left"
-      />
+    <>
+      <div className="container mt-5 listing-title">{listing.title}</div>
+      <div className="listingDetail-card container">
+        <div className="listing-left-side">
+          <div className="listingDetail-img">
+            <img src={listing.images[0]} alt={listing.title} />
+          </div>
+        </div>
 
-      <div className="col-6 text-center d-flex flex-column card justify-content-center listings-card align-items-center">
-        <h2 className="text-center mb-4">{listing.title}</h2>
-        <h4 className="text-center mb-4">{listing.location}</h4>
-        <h4 className="text-center mb-4">{listing.description}</h4>
-        <h4 className="text-center mb-4">{listing.type}</h4>
-        <h4 className="text-center mb-4">${listing.pricePerNight}/per night</h4>
-        <form className="ListingDetail-form">
-        <button className="btn btn-outline-light btn-lg ">Book</button>
-        </form>
+        <div className="listing-right-side">
+          <div className="listings-card">
+            <div className="listing-description">{listing.description}</div>
+            <div>
+              <span className="listing-price">${listing.pricePerNight}</span>{" "}
+              night
+            </div>
+            <form className="ListingDetail-form">
+              <button className="btn btn-outline-light btn-lg listing-btn">
+                Reserve
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
-    </div>
+      <div className="container listing-location">{listing.location}</div>
+    </>
   );
 }
 
