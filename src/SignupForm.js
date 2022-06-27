@@ -53,9 +53,9 @@ function SignupForm({ signup }) {
 
   return (
     <div className="SignupForm">
-      <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+      <div className="container card__container mt-3">
         <h2 className="mb-3">Sign Up</h2>
-        <div className="card">
+        <div className="card signup__card">
           <div className="card-body">
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
@@ -118,7 +118,7 @@ function SignupForm({ signup }) {
               </div> */}
               <div className="d-grid">
                 <button
-                  className="btn btn-outline-secondary"
+                  className="btn btn-outline-secondary signup__btn"
                   onClick={handleSubmit}
                 >
                   Submit
