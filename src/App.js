@@ -26,6 +26,7 @@ function App() {
         // only get user if a token is stored
         if (token) {
           try {
+            console.log("HERE IN APP USEEFFECT");
             const { username } = decode(token);
             // store token from login/register process to SharebnbApi class
             SharebnbApi.token = token;

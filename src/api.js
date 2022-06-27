@@ -33,9 +33,8 @@ class SharebnbApi {
       );
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
-      console.log("API err=", err);
-      console.error("API Error:", err.response);
-      let message = err.response.data.error.message;
+      console.error("API err=", err);
+      let message = err.message;
       throw Array.isArray(message) ? message : [message];
     }
   }
@@ -58,7 +57,6 @@ class SharebnbApi {
   /** Signup for site. */
 
   static async signup(data) {
-    console.log("data=", data);
     let res = await this.request(`signup`, data, "post");
     return res.token;
   }
@@ -71,7 +69,6 @@ class SharebnbApi {
     Object.entries(formData).forEach((entry) =>
       reqForm.append(entry[0], entry[1])
     );
-    console.log("reqForm=", reqForm.entries);
     let res = await this.request(`listings`, reqForm, "post", {
       "Content-type": "multipart/form-data",
     });
@@ -82,7 +79,6 @@ class SharebnbApi {
 
   static async getListings(searchTerm) {
     let res = await this.request("listings");
-
     return res.listings;
   }
 
@@ -96,11 +92,8 @@ class SharebnbApi {
   /** Delete a listing by id. */
 
   static async deleteListing(id) {
-    console.log("HERE IN API CALL");
     let res = await this.request(`listings/${id}`, {}, "delete");
-    debugger;
-
-    return res;
+    return res.deleted;
   }
 
   /** Get messages by username. */
