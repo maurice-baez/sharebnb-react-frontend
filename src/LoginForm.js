@@ -51,10 +51,10 @@ function LoginForm({ login }) {
 
   return (
     <div className="LoginForm">
-      <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+      <div className="container card__container mt-3">
         <h3 className="mb-3">Log In</h3>
 
-        <div className="card">
+        <div className="card login__card">
           <div className="card-body">
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
@@ -87,7 +87,7 @@ function LoginForm({ login }) {
 
               <div className="d-grid">
                 <button
-                  className="btn btn-outline-secondary"
+                  className="btn btn-outline-secondary login__btn"
                   onClick={handleSubmit}
                 >
                   Submit

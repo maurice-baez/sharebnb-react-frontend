@@ -1,0 +1,16 @@
+.profile-img {
+  max-width: 400px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+}
+
+@media (max-width: 767px) {
+  .profile__container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .profile-img {
+    max-width: 300px;
+  }
+}

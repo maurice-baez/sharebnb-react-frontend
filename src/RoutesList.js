@@ -19,7 +19,7 @@ function RoutesList({ login, signup, addListing }) {
   console.debug("Routes");
   const { currentUser } = useContext(UserContext);
   return (
-    <div className="pt-5">
+    <div>
       <Routes>
         {/* unprotected routes */}
         <Route path="/" element={<Homepage />} />
@@ -44,7 +44,6 @@ function RoutesList({ login, signup, addListing }) {
           </>
         )}
         <Route path="*" element={<Navigate to="/" />} />
-
       </Routes>
     </div>
   );

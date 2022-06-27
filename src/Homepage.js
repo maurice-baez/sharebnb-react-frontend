@@ -42,7 +42,6 @@ function Homepage() {
           </>
         )}
       </div>
-
     </div>
   );
 }

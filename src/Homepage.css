@@ -1,11 +1,10 @@
 .Homepage {
   /* put around the vertical center of page */
-  height: calc(100vh - 250px);
+  min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;
-  color: rgb(246, 238, 237);
+  color: var(--white-color);
   background-image: url(https://a0.muscache.com/im/pictures/287ee9eb-73f1-437f-b861-8decac866c2e.jpg?im_w=1200);
-  height: 650px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -15,16 +14,20 @@
   font-size: 72px;
   font-weight: 700;
   text-shadow: 2px 2px 5px rgb(52, 48, 47);
-
 }
 
 .Homepage-name {
-    color: rgb(240, 93, 67);
-    font-size: 42px;
+  color: rgb(240, 93, 67);
+  font-size: 42px;
+  text-shadow: 2px 2px 5px rgb(52, 48, 47);
 }
 
 .Homepage-message {
-    font-size: 18px;
+  font-size: 18px;
 }
 
-
+@media (max-width: 767px) {
+  .Homepage {
+    min-height: calc(100vh - 69px);
+  }
+}
