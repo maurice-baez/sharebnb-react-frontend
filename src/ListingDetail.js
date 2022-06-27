@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SharebnbApi from "./api";
+import { useNavigate } from "react-router-dom";
 import "./ListingDetail.css";
 
 function ListingDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [listing, setListing] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,6 +21,16 @@ function ListingDetail() {
     },
     [id]
   );
+
+  const deleteListing = async () => {
+    try {
+      console.log("here in try");
+      await SharebnbApi.deleteListing(id);
+      navigate("/listings");
+    } catch (errs) {
+      console.log("errors is:", errs);
+    }
+  };
 
   if (isLoading) return <i>Loading...</i>;
 
@@ -37,7 +49,13 @@ function ListingDetail() {
         <h4 className="text-center mb-4">{listing.type}</h4>
         <h4 className="text-center mb-4">${listing.pricePerNight}/per night</h4>
         <form className="ListingDetail-form">
-        <button className="btn btn-outline-light btn-lg ">Book</button>
+          <button className="btn btn-outline-light btn-lg ">Book</button>
+          <button
+            className="btn btn-outline-light btn-lg"
+            onClick={deleteListing}
+          >
+            Delete Listing
+          </button>
         </form>
       </div>
     </div>
