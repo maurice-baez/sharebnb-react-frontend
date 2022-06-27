@@ -23,7 +23,7 @@ function ListingDetail() {
   if (isLoading) return <i>Loading...</i>;
 
   return (
-    <>
+    <div className="listing-detail-container">
       <div className="container mt-5 listing-title">{listing.title}</div>
       <div className="listingDetail-card container">
         <div className="listing-left-side">
@@ -35,20 +35,22 @@ function ListingDetail() {
         <div className="listing-right-side">
           <div className="listings-card">
             <div className="listing-description">{listing.description}</div>
-            <div>
-              <span className="listing-price">${listing.pricePerNight}</span>{" "}
-              night
+            <div className="listing-price-and-btn">
+              <div>
+                <span className="listing-price">${listing.pricePerNight}</span>{" "}
+                night
+              </div>
+              <form className="ListingDetail-form">
+                <button className="btn btn-outline-light btn-lg listing-btn">
+                  Reserve
+                </button>
+              </form>
             </div>
-            <form className="ListingDetail-form">
-              <button className="btn btn-outline-light btn-lg listing-btn">
-                Reserve
-              </button>
-            </form>
           </div>
         </div>
       </div>
       <div className="container listing-location">{listing.location}</div>
-    </>
+    </div>
   );
 }
 

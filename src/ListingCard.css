@@ -19,3 +19,21 @@
   font-size: 18px;
   font-weight: 600;
 }
+
+@media (max-width: 1223px) {
+  .listing__card {
+    max-width: 33%;
+  }
+}
+
+@media (max-width: 950px) {
+  .listing__card {
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .card-img {
+    float: left;
+  }
+}
