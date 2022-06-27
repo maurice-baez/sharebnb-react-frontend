@@ -1,28 +1,21 @@
-.Listing-card {
-    max-width: 32em;
-}
-
 .card-img {
-    height: 16em;
-    border-radius: 25px;
+  border-radius: 10px;
+  height: 250px;
 }
 
-.card-body {
-    color: rgb(74, 72, 72);
+.card-location {
+  margin-top: 5px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
-a {
-    text-decoration: none;
-}
-
-.card-title {
-    font-size:24px;
-    color: white;
-    background-color: rgb(240, 93, 67);
-    border-radius: 25px;
+.card-type {
+  display: block;
+  margin-bottom: 15px;
+  margin-top: 5px;
 }
 
 .card-price {
-    font-weight: bold;
+  font-size: 18px;
+  font-weight: 600;
 }
-

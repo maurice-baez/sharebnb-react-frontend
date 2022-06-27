@@ -5,7 +5,7 @@
   --primary-color: #f05d43;
   --white-color: #ffffff;
   --alt-white: #fff6d4;
-  --text-color: #496f73;
+  --text-color: #232727;
   --gray-color: #888888;
   --invert-primary-color: #586ba4;
   --invert-text-color: #ffffff;
@@ -30,10 +30,7 @@ body {
 
 a {
   text-decoration: none;
-}
-
-a:hover {
-  color: var(--alt-white);
+  color: var(--text-color);
 }
 
 ul {
@@ -41,7 +38,7 @@ ul {
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1200px;
   padding: 0 10px;
   width: 100%;
 }
