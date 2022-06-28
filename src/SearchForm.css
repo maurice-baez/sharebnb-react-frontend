@@ -1,11 +1,19 @@
-.btn {
-  font-weight: 300;
+.search__field {
+  width: 500px;
+  border-radius: 20px;
 }
 
-.btn:hover {
-  color: rgb(83, 50, 50);
+.btn__search {
+  color: var(--white-color);
+  border: 1px solid var(--white-color);
+  border-radius: 20px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin-left: -15px;
+  padding-left: 20px;
+  border-left: none;
 }
 
-#btn-search {
-    margin-left: 8px;
+.btn__search:hover {
+  color: var(--alt-white);
 }
