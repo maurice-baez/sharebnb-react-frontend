@@ -94,6 +94,7 @@
   }
 
   .listing-title {
+    font-size: 2rem;
     margin-left: 40px;
   }
 
@@ -119,6 +120,7 @@
   }
 
   .listing-title {
+    font-size: 1.5rem;
     margin-left: 0;
   }
 
