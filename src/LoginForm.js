@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-// import Alert from "../common/Alert";
-import "./LoginForm.css";
+import Alert from "./Alert";
 import { useNavigate } from "react-router-dom";
+import "./LoginForm.css";
 
 /** Login form.
  *
@@ -21,12 +21,15 @@ function LoginForm({ login }) {
   });
   const [formErrors, setFormErrors] = useState([]);
 
-  // console.debug(
-  //   "LoginForm",
-  //   "login=", typeof login,
-  //   "formData=", formData,
-  //   "formErrors", formErrors,
-  // );
+  console.debug(
+    "LoginForm",
+    "login=",
+    typeof login,
+    "formData=",
+    formData,
+    "formErrors",
+    formErrors
+  );
 
   /** Handle form submit:
    *
@@ -37,9 +40,9 @@ function LoginForm({ login }) {
     try {
       await login(formData);
       navigate("/");
-    } catch (errs) {
-      // console.log("errors is:", errs);
-      // setFormErrors([...errs]);
+    } catch (err) {
+      console.log("ERROR=", err);
+      setFormErrors(err);
     }
   }
 
@@ -81,9 +84,9 @@ function LoginForm({ login }) {
                 />
               </div>
 
-              {/* {formErrors.length
-                ? <Alert type="danger" messages={formErrors} />
-                : null} */}
+              {formErrors.length ? (
+                <Alert type="danger" messages={formErrors} />
+              ) : null}
 
               <div className="d-grid">
                 <button
