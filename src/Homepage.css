@@ -17,7 +17,7 @@
 }
 
 .Homepage-name {
-  color: rgb(240, 93, 67);
+  color: var(--primary-color);
   font-size: 42px;
   text-shadow: 2px 2px 5px rgb(52, 48, 47);
 }
@@ -29,15 +29,15 @@
 .btn-start {
   font-size: 20px;
   text-decoration: none;
-  color: var(--alt-white);
+  color: var(--white-color);
   border-radius: 15px;
-  border: 1px solid var(--alt-white);
+  border: 1px solid var(--white-color);
 }
 
 .btn-start:hover {
-  color: var(--white-color) !important;
+  color: var(--white-color);
   background-color: var(--primary-color);
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 /* Fade-in effect */

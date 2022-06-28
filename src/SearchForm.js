@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./SearchForm.css";
 
 /** Search form.
@@ -14,7 +13,6 @@ import "./SearchForm.css";
  */
 
 function SearchForm({ searchFor }) {
-  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   console.debug("searchTerm=", searchTerm);
 
@@ -22,10 +20,8 @@ function SearchForm({ searchFor }) {
   async function handleSubmit(evt) {
     // take care of accidentally trying to search for just spaces
     evt.preventDefault();
-    await searchFor(searchTerm.trim() || undefined);
-    const term = searchTerm;
-    setSearchTerm("");
-    navigate(`/listings?q=${term}`);
+    searchFor(searchTerm.trim() || undefined);
+    setSearchTerm(searchTerm.trim());
   }
 
   /** Update form fields */

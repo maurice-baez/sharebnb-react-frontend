@@ -73,7 +73,6 @@ function NavBar({ logout, search }) {
               sharebnb
             </Link>
           </div>
-          <SearchForm searchFor={search} />
           <div className="header__rightside">
             <div className="header__menu header-menu">
               <ul className="header-menu__list">
