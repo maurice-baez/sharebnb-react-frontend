@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
 import "./SearchForm.css";
 
 /** Search form.
@@ -14,16 +13,15 @@ import "./SearchForm.css";
  */
 
 function SearchForm({ searchFor }) {
-
   const [searchTerm, setSearchTerm] = useState("");
-  console.debug("searchTerm=", searchTerm)
+  console.debug("searchTerm=", searchTerm);
 
   /** Tell parent to filter */
   async function handleSubmit(evt) {
     // take care of accidentally trying to search for just spaces
     evt.preventDefault();
-    await searchFor(searchTerm.trim() || undefined);
-    setSearchTerm("");
+    searchFor(searchTerm.trim() || undefined);
+    setSearchTerm(searchTerm.trim());
   }
 
   /** Update form fields */
@@ -32,21 +30,21 @@ function SearchForm({ searchFor }) {
   }
 
   return (
-    <div className="SearchForm mb-4">
+    <div className="search__form">
       <form onSubmit={handleSubmit}>
-        <div className="row justify-content-center gx-0">
-          <div className="col-8">
+        <div className="d-flex">
+          <div className="">
             <input
-              className="form-control"
+              className="form-control search__field"
               name="searchTerm"
               placeholder="Search for your perfect space..."
               value={searchTerm}
               onChange={handleChange}
             />
           </div>
-          <div className="col-auto">
-            <button type="submit" id="btn-search" className="btn btn-outline-light">
-              Submit
+          <div className="">
+            <button type="submit" className="btn btn__search">
+              Search
             </button>
           </div>
         </div>

@@ -80,8 +80,9 @@ class SharebnbApi {
   /** Get listings (filtered by title/description/ if not undefined) */
 
   static async getListings(searchTerm) {
-    let res = await this.request("listings");
-
+    let res = searchTerm
+      ? await this.request(`listings?q=${searchTerm}`)
+      : await this.request(`listings`);
     return res.listings;
   }
 
