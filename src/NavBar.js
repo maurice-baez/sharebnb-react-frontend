@@ -85,16 +85,16 @@ function NavBar({ logout, search }) {
   //   </nav>
   // );
   return (
-    <header class="page__header header">
-      <div class="header__container container">
-        <div class="header__body">
-          <div class="header__leftside">
+    <header className="page__header header">
+      <div className="header__container container">
+        <div className="header__body">
+          <div className="header__leftside">
             <Link className="header__logo header__link" to="/">
               sharebnb
             </Link>
           </div>
-          <div class="header__rightside">
-            <div class="header__menu header-menu">
+          <div className="header__rightside">
+            <div className="header__menu header-menu">
               <ul className="header-menu__list">
                 <li className="header-menu__item">
                   <NavLink
@@ -146,9 +146,9 @@ function NavBar({ logout, search }) {
                 <i class="bx bx-moon"></i>
               </div>
             </div> */}
-            <div class="header__mob">
-              <div class="header__mob-menu">
-                <i class="bx bx-menu" onClick={handleMenu}></i>
+            <div className="header__mob">
+              <div className="header__mob-menu">
+                <i className="bx bx-menu" onClick={handleMenu}></i>
               </div>
             </div>
           </div>

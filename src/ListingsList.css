@@ -33,6 +33,9 @@
 
 @media (max-width: 767px) {
   .listing__card {
-    min-width: 75%;
+    width: 60px;
+  }
+  .container {
+    padding: 0 50px;
   }
 }

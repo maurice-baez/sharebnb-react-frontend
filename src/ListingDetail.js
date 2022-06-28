@@ -1,12 +1,22 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SharebnbApi from "./api";
+import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 import "./ListingDetail.css";
 
 function ListingDetail() {
   const { id } = useParams();
   const [listing, setListing] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [liked, setLiked] = useState(false);
+
+  function handleLike() {
+    setLiked(true);
+  }
+
+  function handleUnlike() {
+    setLiked(false);
+  }
 
   useEffect(
     function getListingOnRender() {
@@ -23,12 +33,29 @@ function ListingDetail() {
   if (isLoading) return <i>Loading...</i>;
 
   return (
-    <div className="listing-detail-container">
+    <div className="listing-detail-container container">
       <div className="container mt-5 listing-title">{listing.title}</div>
       <div className="listingDetail-card container">
         <div className="listing-left-side">
-          <div className="listingDetail-img">
-            <img src={listing.images[0]} alt={listing.title} />
+          <div className="listings-card-img-container-detail listingDetail-img">
+            <img
+              className="card-img"
+              src={listing.images[0]}
+              alt={listing.title}
+            />
+            <button className="icon-btn-detail">
+              {liked ? (
+                <BsSuitHeartFill
+                  className="liked-icon-detail icon-detail"
+                  onClick={handleUnlike}
+                />
+              ) : (
+                <BsSuitHeart
+                  className="unliked-icon-detail icon-detail"
+                  onClick={handleLike}
+                />
+              )}
+            </button>
           </div>
         </div>
 

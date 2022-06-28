@@ -20,20 +20,32 @@
   font-weight: 600;
 }
 
-@media (max-width: 1223px) {
-  .listing__card {
-    max-width: 33%;
-  }
+.icon-btn {
+  background: transparent;
+  border: none;
 }
 
-@media (max-width: 950px) {
-  .listing__card {
-    max-width: 50%;
-  }
+.icon {
+  font-size: 38px;
+  opacity: 0.8;
+  padding-top: 10px;
+  padding-right: 10px;
+  z-index: 5;
 }
 
-@media (max-width: 767px) {
-  .card-img {
-    float: left;
-  }
+.unliked-icon {
+  color: var(--alt-white);
+}
+
+.liked-icon {
+  color: var(--primary-color);
+}
+
+.listings-card-img-container {
+  position: relative;
+}
+
+.listings-card-img-container .icon-btn {
+  position: absolute;
+  right: 0;
 }

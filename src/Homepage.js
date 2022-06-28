@@ -17,16 +17,18 @@ function Homepage() {
   return (
     <div className="Homepage">
       <div className="container text-center">
-        <h1 className="mb-4 Homepage-title">sharebnb</h1>
+        <h1 className="mb-4 Homepage-title fade-in">sharebnb</h1>
         {currentUser ? (
           <>
-            <h2 className="Homepage-welcome">
+            <h2 className="Homepage-welcome fade-in">
               Hello,{" "}
-              <span className="Homepage-name">{currentUser.firstName}</span>
+              <span className="Homepage-name fade-in">
+                {currentUser.firstName}
+              </span>
             </h2>
             <Link to="/listings">
-              <button className="btn btn-outline-light mt-2">
-                Let's get started
+              <button className="btn btn-outline-secondary btn-start mt-3 fade-in-btn">
+                Let's get started...
               </button>
             </Link>
           </>
