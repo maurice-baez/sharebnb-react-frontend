@@ -41,7 +41,6 @@ function LoginForm({ login }) {
       await login(formData);
       navigate("/");
     } catch (err) {
-      console.log("ERROR=", err);
       setFormErrors(err);
     }
   }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Alert from "./Alert";
 import "./SignupForm.css";
 import { useNavigate } from "react-router-dom";
 
@@ -22,11 +23,11 @@ function SignupForm({ signup }) {
     last_name: "",
     email: "",
   });
-  // const [formErrors, setFormErrors] = useState([]);
+  const [formErrors, setFormErrors] = useState([]);
 
   /** Handle form submit:
    *
-   * Calls login func prop and, if not successful, sets errors.
+   * Calls signup func prop and, if not successful, sets errors.
    */
   async function handleSubmit(evt) {
     evt.preventDefault();
@@ -34,8 +35,8 @@ function SignupForm({ signup }) {
       await signup(formData);
       navigate("/");
     } catch (err) {
-      console.log("err is=", err);
-      // setFormErrors(err);
+      console.log("ERR=", err);
+      setFormErrors(err);
     }
   }
 
@@ -116,6 +117,10 @@ function SignupForm({ signup }) {
                   onChange={handleChange}
                 />
               </div> */}
+
+              {formErrors.length ? (
+                <Alert type="danger" messages={formErrors} />
+              ) : null}
               <div className="d-grid">
                 <button
                   className="btn btn-outline-secondary signup__btn"
