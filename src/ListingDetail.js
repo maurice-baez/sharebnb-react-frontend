@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SharebnbApi from "./api";
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
+import LoadingSpinner from "./LoadingSpinner";
 import "./ListingDetail.css";
 
 function ListingDetail() {
@@ -30,7 +31,7 @@ function ListingDetail() {
     [id]
   );
 
-  if (isLoading) return <i>Loading...</i>;
+  if (isLoading) return <LoadingSpinner />;
 
   return (
     <div className="listing-detail-container container">
