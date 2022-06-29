@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import UserContext from "./UserContext";
 import "./NavBar.css";
-import SearchForm from "./SearchForm";
 
 /** NavBar for site. Shows up on every page.
  *
@@ -10,11 +9,15 @@ import SearchForm from "./SearchForm";
  *
  */
 
-function NavBar({ logout, search }) {
+function NavBar({ logout }) {
   const { currentUser } = useContext(UserContext);
   console.debug("Navigation", "currentUser=", currentUser);
 
   const handleMenu = () => {
+    document.querySelector(".header-menu").classList.toggle("is-active");
+  };
+
+  const handleClick = () => {
     document.querySelector(".header-menu").classList.toggle("is-active");
   };
 
@@ -23,6 +26,7 @@ function NavBar({ logout, search }) {
       <>
         <li className="header-menu__item">
           <NavLink
+            onClick={handleClick}
             className="header-menu__link header__link"
             to="/listings/new"
           >
@@ -30,7 +34,11 @@ function NavBar({ logout, search }) {
           </NavLink>
         </li>
         <li className="header-menu__item">
-          <NavLink className="header-menu__link header__link" to="/profile">
+          <NavLink
+            onClick={handleClick}
+            className="header-menu__link header__link"
+            to="/profile"
+          >
             Profile
           </NavLink>
         </li>
@@ -51,12 +59,20 @@ function NavBar({ logout, search }) {
     return (
       <>
         <li className="header-menu__item">
-          <NavLink className="header-menu__link header__link" to="/login">
+          <NavLink
+            onClick={handleClick}
+            className="header-menu__link header__link"
+            to="/login"
+          >
             Login
           </NavLink>
         </li>
         <li className="header-menu__item">
-          <NavLink className="header-menu__link header__link" to="/signup">
+          <NavLink
+            onClick={handleClick}
+            className="header-menu__link header__link"
+            to="/signup"
+          >
             Signup
           </NavLink>
         </li>
@@ -78,6 +94,7 @@ function NavBar({ logout, search }) {
               <ul className="header-menu__list">
                 <li className="header-menu__item">
                   <NavLink
+                    onClick={handleClick}
                     className="header-menu__link header__link"
                     to="/listings"
                   >
