@@ -154,4 +154,17 @@
   .Homepage {
     min-height: calc(100vh - 59px);
   }
+  .Homepage-title {
+    margin-top: 50px;
+    font-size: 64px;
+  }
+  .Homepage-name {
+    font-size: 36px;
+  }
+  .Homepage-message {
+    font-size: 18px;
+  }
+  .btn-start {
+    font-size: 16px;
+  }
 }

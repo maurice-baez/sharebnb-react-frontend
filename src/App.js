@@ -6,6 +6,7 @@ import SharebnbApi from "./api";
 import decode from "jwt-decode";
 import UserContext from "./UserContext";
 import LoadingSpinner from "./LoadingSpinner";
+import { Navigate } from "react-router-dom";
 
 const LOCAL_STORAGE_TOKEN_KEY = "token";
 
@@ -62,10 +63,16 @@ function App() {
 
   async function search(searchTerm) {
     await SharebnbApi.getListings(searchTerm);
+    // navigate("/listings");
   }
 
   /** Handles site-wide logout. */
   function logout() {
+    if (
+      document.querySelector(".header-menu").classList.contains("is-active")
+    ) {
+      document.querySelector(".header-menu").classList.toggle("is-active");
+    }
     setToken(null);
     setCurrentUser(null);
     localStorage.clear();
