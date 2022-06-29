@@ -17,6 +17,14 @@ function Homepage() {
   return (
     <div className="Homepage">
       <div className="container text-center">
+        <span>
+          <img
+            src="../images/mountain-logo.webp"
+            alt="mountain logo"
+            className="mountain__logo"
+          />
+        </span>
+
         <h1 className="mb-4 Homepage-title fade-in">sharebnb</h1>
         {currentUser ? (
           <>
@@ -34,7 +42,7 @@ function Homepage() {
           </>
         ) : (
           <>
-            <p className="Homepage-message">Lets find your perfect space...</p>
+            <p className="Homepage-message">Lets find your next adventure...</p>
             <Link to="/login">
               <button className="btn btn-outline-primary btn__home">
                 Login

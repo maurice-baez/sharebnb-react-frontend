@@ -25,13 +25,14 @@
 }
 
 .btn__search:hover {
-  color: var(--primary-color);
+  color: var(--white-color);
+  background-color: var(--green-color);
   transition: 0.5s;
 }
 
 .btn__search:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 10px var(--light-gray);
+  box-shadow: 0 0 5px var(--light-gray);
 }
 
 @media (max-width: 767px) {

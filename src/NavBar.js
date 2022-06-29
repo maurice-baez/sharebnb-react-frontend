@@ -30,7 +30,7 @@ function NavBar({ logout }) {
             className="header-menu__link header__link"
             to="/listings/new"
           >
-            Add you space
+            Add a space
           </NavLink>
         </li>
         <li className="header-menu__item">
@@ -86,7 +86,7 @@ function NavBar({ logout }) {
         <div className="header__body">
           <div className="header__leftside">
             <Link className="header__logo header__link" to="/">
-              sharebnb
+              <img src="../images/sharebnblogo.webp" alt="sharebnb logo" />
             </Link>
           </div>
           <div className="header__rightside">

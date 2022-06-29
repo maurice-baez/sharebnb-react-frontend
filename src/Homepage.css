@@ -1,57 +1,63 @@
 .Homepage {
   /* put around the vertical center of page */
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 110px);
   display: flex;
   align-items: center;
-  color: var(--white-color);
-  background-image: url(https://a0.muscache.com/im/pictures/287ee9eb-73f1-437f-b861-8decac866c2e.jpg?im_w=1200);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  color: var(--primary-color);
 }
 
 .Homepage-title {
   font-size: 76px;
   font-weight: 700;
-  text-shadow: 2px 2px 5px rgb(52, 48, 47);
+  text-shadow: 2px 2px 5px var(--gray-color);
 }
 
 .Homepage-name {
   color: var(--primary-color);
   font-size: 42px;
-  text-shadow: 2px 2px 5px rgb(52, 48, 47);
+  text-shadow: 1px 1px 2.5px var(--gray-color);
 }
 
 .Homepage-message {
   font-size: 22px;
   font-weight: 500;
-  text-shadow: 2 2px 35px var(--primary-color);
+  margin-top: -25px;
+  font-style: italic;
+  color: var(--green-color);
+  text-shadow: 0 1px 5px var(--gray-color);
+}
+
+.Homepage-welcome {
+  color: var(--green-color);
 }
 
 .btn__home {
-  border: 1px solid var(--white-color);
-  color: var(--white-color);
+  border: none;
+  color: var(--primary-color);
   margin: 10px;
   border-radius: 10px;
-  box-shadow: 0 2px 4px 0 var(--gray-color);
+  box-shadow: 0px 1px 1.5px 0 var(--green-color);
 }
 
 .btn__home:hover {
-  background-color: var(--primary-color);
+  background-color: var(--green-color);
   border-color: var(--primary-color);
 }
 
 .btn-start {
   font-size: 20px;
   text-decoration: none;
-  color: var(--white-color);
-  border-radius: 15px;
-  border: 1px solid var(--white-color);
+  color: var(--primary-color);
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 1px 1.5px 0px var(--gray-color);
+
+  /* border: 1px solid var(--primary-color); */
 }
 
 .btn-start:hover {
   color: var(--white-color);
-  background-color: var(--primary-color);
+  background-color: var(--green-color);
   opacity: 0.9;
 }
 
@@ -167,7 +173,11 @@
 
 @media (max-width: 767px) {
   .Homepage {
-    min-height: calc(100vh - 59px);
+    min-height: calc(100vh - 150px);
+  }
+
+  .mountain__logo {
+    width: 300px;
   }
   .Homepage-title {
     font-size: 64px;
