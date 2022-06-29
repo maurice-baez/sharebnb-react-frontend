@@ -2,11 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
 
 :root {
-  /* --primary-color: #f06a53; */
+  --primary-color: #e46c57;
   --white-color: #ffffff;
   --alt-white: #fff6d4;
   --text-color: #232727;
-  --primary-color: #e46c57;
   --light-gray: #b4bcbc;
   --gray-color: #888888;
   --invert-primary-color: #586ba4;
@@ -45,7 +44,6 @@ ul {
 
 .card {
   border-radius: 0;
-  box-shadow: 0 1px 1px 0 var(--primary-color),
-    0 1px 1px -1px var(--primary-color), 0 0.5px 1px 0 var(--primary-color);
+  box-shadow: 0 1px 2px 0 var(--gray-color);
   margin-bottom: 15vh;
 }

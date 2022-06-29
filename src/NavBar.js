@@ -26,7 +26,7 @@ function NavBar({ logout, search }) {
             className="header-menu__link header__link"
             to="/listings/new"
           >
-            Add a Listing
+            Add you space
           </NavLink>
         </li>
         <li className="header-menu__item">
@@ -81,7 +81,7 @@ function NavBar({ logout, search }) {
                     className="header-menu__link header__link"
                     to="/listings"
                   >
-                    Listings
+                    Spaces
                   </NavLink>
                 </li>
                 {currentUser ? loggedInNav() : loggedOutNav()}
