@@ -1,6 +1,6 @@
 .Homepage {
   /* put around the vertical center of page */
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 70px);
   display: flex;
   align-items: center;
   color: var(--white-color);
@@ -152,6 +152,6 @@
 
 @media (max-width: 767px) {
   .Homepage {
-    min-height: calc(100vh - 69px);
+    min-height: calc(100vh - 59px);
   }
 }
