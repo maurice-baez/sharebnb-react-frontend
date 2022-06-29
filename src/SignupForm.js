@@ -123,7 +123,7 @@ function SignupForm({ signup }) {
               ) : null}
               <div className="d-grid">
                 <button
-                  className="btn btn-outline-secondary signup__btn"
+                  className="btn btn-outline-secondary form__btn"
                   onClick={handleSubmit}
                 >
                   Submit

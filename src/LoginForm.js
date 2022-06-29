@@ -89,7 +89,7 @@ function LoginForm({ login }) {
 
               <div className="d-grid">
                 <button
-                  className="btn btn-outline-secondary login__btn"
+                  className="btn btn-outline-secondary form__btn"
                   onClick={handleSubmit}
                 >
                   Submit

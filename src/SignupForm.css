@@ -1,12 +1,5 @@
-.card__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .signup__card {
-  border-radius: 25px;
+  border-radius: 10px;
   width: 50%;
 }
 

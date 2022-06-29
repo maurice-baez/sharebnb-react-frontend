@@ -43,7 +43,48 @@ ul {
 }
 
 .card {
-  border-radius: 0;
   box-shadow: 0 1px 2px 0 var(--gray-color);
+  border-radius: 10px;
   margin-bottom: 15vh;
+  width: 40%;
+  padding: 10px 10px 15px 10px;
+  margin-top: 25px;
+}
+
+.card__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.LoginForm {
+  margin-top: 100px;
+}
+
+.SignupForm {
+  margin-top: 35px;
+}
+
+.form__btn {
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.form__btn:hover {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--white-color);
+  transform: scale(1.01);
+}
+
+@media (max-width: 767px) {
+  .LoginForm {
+    margin-top: 100px;
+  }
+
+  .SignupForm {
+    margin-top: 75px;
+  }
 }

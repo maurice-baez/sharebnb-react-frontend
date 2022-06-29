@@ -36,10 +36,14 @@ function Homepage() {
           <>
             <p className="Homepage-message">Lets find your perfect space...</p>
             <Link to="/login">
-              <button className="btn btn-outline-light m-3">Login</button>
+              <button className="btn btn-outline-primary btn__home">
+                Login
+              </button>
             </Link>
             <Link to="/signup">
-              <button className="btn btn-outline-light m-3">Signup</button>
+              <button className="btn btn-outline-primary btn__home">
+                Signup
+              </button>
             </Link>
           </>
         )}

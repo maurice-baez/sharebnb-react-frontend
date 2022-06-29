@@ -23,7 +23,22 @@
 }
 
 .Homepage-message {
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: 500;
+  text-shadow: 2 2px 35px var(--primary-color);
+}
+
+.btn__home {
+  border: 1px solid var(--white-color);
+  color: var(--white-color);
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 0 var(--gray-color);
+}
+
+.btn__home:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 .btn-start {
@@ -155,7 +170,6 @@
     min-height: calc(100vh - 59px);
   }
   .Homepage-title {
-    margin-top: 10px;
     font-size: 64px;
   }
   .Homepage-name {

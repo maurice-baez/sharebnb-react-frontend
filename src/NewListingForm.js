@@ -33,8 +33,8 @@ function NewListingForm({ addListing }) {
 
   return (
     <div className="NewListingForm">
-      <div className="container card__container mt-3">
-        <h2 className="mb-3">Add a New Listing</h2>
+      <div className="container card__container mt-5">
+        <h2 className="mb-3">Add a new space</h2>
         <div className="card newListing__card">
           <div className="card-body">
             <form onSubmit={handleSubmit}>
@@ -50,7 +50,7 @@ function NewListingForm({ addListing }) {
               <div className="mb-3">
                 <label className="form-label">Description</label>
                 <textarea
-                  rows="5"
+                  rows="2"
                   name="description"
                   className="form-control"
                   value={formData.description}
@@ -98,6 +98,7 @@ function NewListingForm({ addListing }) {
               <div className="mb-3">
                 <label htmlFor="images">Images</label>
                 <input
+                  className="custom-file-input"
                   type="file"
                   name="image"
                   id="image"
@@ -107,7 +108,7 @@ function NewListingForm({ addListing }) {
               </div>
               <div className="d-grid">
                 <button
-                  className="btn btn-outline-secondary newLisitng__btn"
+                  className="btn btn-outline-secondary form__btn"
                   onClick={handleSubmit}
                 >
                   Submit
