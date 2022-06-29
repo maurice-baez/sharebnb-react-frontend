@@ -1,6 +1,6 @@
 .search__field {
   width: 550px;
-  box-shadow: 0 0 3px var(--gray-color);
+  box-shadow: 0 1px 2px 0 var(--gray-color);
   padding: 10px;
   padding-right: 20px;
   border-radius: 20px;
@@ -13,10 +13,11 @@
 }
 
 .btn__search {
-  color: var(--primary-color);
-  box-shadow: 0 0 3px var(--gray-color);
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  box-shadow: 0 1px 2px 0 var(--gray-color);
   padding: 10px 20px;
-  padding-left: 30px;
+  padding-left: 25px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   margin-left: -15px;
@@ -35,6 +36,6 @@
 
 @media (max-width: 767px) {
   .search__field {
-    width: 350px;
+    width: 250px;
   }
 }

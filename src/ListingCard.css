@@ -1,6 +1,7 @@
 .card-img {
   border-radius: 10px;
   height: 250px;
+  box-shadow: 0 2px 5px 0 var(--gray-color);
 }
 
 .card-location {

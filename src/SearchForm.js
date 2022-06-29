@@ -28,7 +28,6 @@ function SearchForm({ searchFor }) {
   function handleChange(evt) {
     setSearchTerm(evt.target.value);
   }
-
   return (
     <div className="search__form">
       <form onSubmit={handleSubmit}>
