@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import SharebnbApi from "./api";
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 import LoadingSpinner from "./LoadingSpinner";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./ListingDetail.css";
 
 function ListingDetail() {
@@ -34,51 +36,78 @@ function ListingDetail() {
   if (isLoading) return <LoadingSpinner />;
 
   return (
-    <div className="listing-detail-container container">
-      <div className="container mt-5 listing-title">{listing.title}</div>
-      <div className="listingDetail-card container">
-        <div className="listing-left-side">
-          <div className="listings-card-img-container-detail listingDetail-img">
-            <img
-              className="card-img"
-              src={listing.images[0]}
-              alt={listing.title}
-            />
-            <button className="icon-btn-detail">
-              {liked ? (
-                <BsSuitHeartFill
-                  className="liked-icon-detail icon-detail"
-                  onClick={handleUnlike}
-                />
-              ) : (
-                <BsSuitHeart
-                  className="unliked-icon-detail icon-detail"
-                  onClick={handleLike}
-                />
-              )}
-            </button>
-          </div>
-        </div>
+    <>
+      <div className="listing-detail-container container">
+        <div className="container mt-5 listing-title">{listing.title}</div>
+        <div className="listingDetail-card container">
+          <div className="listing-left-side">
+            <div className="listings-card-img-container-detail listingDetail-img">
+              <Carousel
+                showThumbs={false}
+                showStatus={false}
+                className="card-img"
+              >
+                <div>
+                  <img
+                    src={listing.images[0]}
+                    alt={listing.title}
+                    className="card-img"
+                  />
+                </div>
+                <div>
+                  <img
+                    src={listing.images[0]}
+                    alt={listing.title}
+                    className="card-img"
+                  />
+                </div>
+                <div>
+                  <img
+                    src={listing.images[0]}
+                    alt={listing.title}
+                    className="card-img"
+                  />
+                </div>
+              </Carousel>
 
-        <div className="listing-right-side">
-          <div className="listings-card">
-            <div className="listing-description">{listing.description}</div>
-            <div className="listing-price-and-btn">
-              <div>
-                <span className="listing-price">${listing.pricePerNight}</span>{" "}
-                night
+              <button className="icon-btn-detail">
+                {liked ? (
+                  <BsSuitHeartFill
+                    className="liked-icon-detail icon-detail"
+                    onClick={handleUnlike}
+                  />
+                ) : (
+                  <BsSuitHeart
+                    className="unliked-icon-detail icon-detail"
+                    onClick={handleLike}
+                  />
+                )}
+              </button>
+            </div>
+          </div>
+
+          <div className="listing-right-side">
+            <div className="listings-card">
+              <div className="listing-description">{listing.description}</div>
+              <div className="listing-price-and-btn">
+                <div>
+                  <span className="listing-price">
+                    ${listing.pricePerNight}
+                  </span>{" "}
+                  night
+                </div>
+                <form className="ListingDetail-form">
+                  <button className="btn btn-outline-light btn-lg listing-btn">
+                    Reserve
+                  </button>
+                </form>
               </div>
-              <form className="ListingDetail-form">
-                <button className="btn btn-outline-light btn-lg listing-btn">
-                  Reserve
-                </button>
-              </form>
             </div>
           </div>
         </div>
+        <div className="container listing-location">{listing.location}</div>
       </div>
-      <div className="container listing-location">{listing.location}</div>
-    </div>
+    </>
   );
 }
 

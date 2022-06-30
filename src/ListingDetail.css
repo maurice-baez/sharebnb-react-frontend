@@ -10,7 +10,7 @@
   color: var(--text-color);
 }
 
-.listingDetail-img img {
+.card-img {
   float: left;
   height: 400px;
   width: 600px;
@@ -97,10 +97,12 @@
     font-size: 2rem;
     margin-left: 40px;
   }
-
-  .listingDetail-img img {
-    width: 100%;
+  .listings-card-img-container-detail {
     margin-left: 40px;
+  }
+
+  .card-img {
+    /* width: 80%; */
   }
 
   .listing-location {
@@ -113,7 +115,7 @@
 }
 
 @media (max-width: 767px) {
-  .listingDetail-img img {
+  .card-img {
     width: 100%;
     height: auto;
     margin-left: 0;
