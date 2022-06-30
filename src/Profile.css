@@ -54,7 +54,6 @@
   .profile__card {
     align-items: center;
     justify-content: center;
-    width: 80%;
-    margin: 10px;
+    width: 95%;
   }
 }
