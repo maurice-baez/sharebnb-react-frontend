@@ -6,6 +6,8 @@ import ListingsList from "./ListingsList";
 import BookingMessages from "./BookingMessages";
 import ListingMessages from "./ListingMessages";
 import SharebnbApi from "./api";
+import { GoLocation } from "react-icons/go";
+import { Link } from "react-router-dom";
 import "./Profile.css";
 
 function Profile() {
@@ -13,44 +15,53 @@ function Profile() {
   const [bookingMessages, setBookingMessages] = useState([]);
   const [listingMessages, setListingMessages] = useState([]);
 
-  useEffect(function getAllMessages() {
-    async function getMessagesAPI() {
-      const messages = await SharebnbApi.getMessages(currentUser.username);
-      const userListingMessages = messages.filter((message) => {
-        return (
-          currentUser.listings.filter(
-            (listing) => listing.id === message.listingID
-          ).length > 0
-        );
-      });
-      const userBookingMessages = messages.filter((message) => {
-        return (
-          currentUser.listings.filter(
-            (listing) => listing.id !== message.listingID
-          ).length > 0
-        );
-      });
+  // useEffect(function getAllMessages() {
+  //   async function getMessagesAPI() {
+  //     const messages = await SharebnbApi.getMessages(currentUser.username);
+  //     const userListingMessages = messages.filter((message) => {
+  //       return (
+  //         currentUser.listings.filter(
+  //           (listing) => listing.id === message.listingID
+  //         ).length > 0
+  //       );
+  //     });
+  //     const userBookingMessages = messages.filter((message) => {
+  //       return (
+  //         currentUser.listings.filter(
+  //           (listing) => listing.id !== message.listingID
+  //         ).length > 0
+  //       );
+  //     });
 
-      setBookingMessages(userBookingMessages);
-      setListingMessages(userListingMessages);
-    }
+  //     setBookingMessages(userBookingMessages);
+  //     setListingMessages(userListingMessages);
+  //   }
 
-    getMessagesAPI();
-  }, []);
+  //   getMessagesAPI();
+  // }, []);
+
+  // console.log("BOOKINGSMSGS+", bookingMessages);
+  // console.log("LISTINGSMSGS=", listingMessages);
 
   return (
     <div className="container profile__container mt-4">
-      {/* <div>
-        <BookingsList bookings={currentUser.bookings} />
-        <ListingsList listings={currentUser.listings} />
-        <ListingMessages messages={listingMessages} />
-        /<BookingMessages messages={bookingMessages} />
-      </div> */}
-      <img
-        src={currentUser.imageUrl}
-        alt=""
-        className="profile-img img-fluid"
-      />
+      <div className="card profile__card profile__userinfo">
+        <img src={currentUser.imageUrl} alt={currentUser.firstName} />
+        <span className="profile__location">
+          <GoLocation />
+          {currentUser.location || "Anywhere"}
+        </span>
+
+        {/* <div className="profile__details">{currentUser.firstName}</div> */}
+      </div>
+      <div className="card profile__card profile__spaces">
+        Your Saved Spaces:
+        <Link to="/listings/34">
+          <div className="placeholder__space">
+            <img src="../images/mossbeach.webp" alt="temp" />
+          </div>
+        </Link>
+      </div>
     </div>
   );
 }

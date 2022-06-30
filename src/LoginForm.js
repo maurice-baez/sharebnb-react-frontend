@@ -21,16 +21,6 @@ function LoginForm({ login }) {
   });
   const [formErrors, setFormErrors] = useState([]);
 
-  console.debug(
-    "LoginForm",
-    "login=",
-    typeof login,
-    "formData=",
-    formData,
-    "formErrors",
-    formErrors
-  );
-
   /** Handle form submit:
    *
    * Calls login func prop and, if not successful, sets errors.
@@ -39,7 +29,7 @@ function LoginForm({ login }) {
     evt.preventDefault();
     try {
       await login(formData);
-      navigate("/");
+      navigate("/listings");
     } catch (err) {
       setFormErrors(err);
     }
