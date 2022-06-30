@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SearchForm.css";
 
 /** Search form.
@@ -21,7 +21,7 @@ function SearchForm({ searchFor }) {
     // take care of accidentally trying to search for just spaces
     evt.preventDefault();
     searchFor(searchTerm.trim() || undefined);
-    setSearchTerm(searchTerm.trim());
+    setSearchTerm("");
   }
 
   /** Update form fields */
@@ -36,7 +36,7 @@ function SearchForm({ searchFor }) {
             <input
               className="form-control search__field"
               name="searchTerm"
-              placeholder="Search for your perfect space..."
+              placeholder="Find for your perfect space..."
               value={searchTerm}
               onChange={handleChange}
             />
