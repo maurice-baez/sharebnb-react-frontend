@@ -177,7 +177,7 @@
 
 @media (max-width: 767px) {
   .Homepage {
-    min-height: calc(100vh - 150px);
+    min-height: calc(100vh - 70px);
   }
 
   .mountain__logo {
