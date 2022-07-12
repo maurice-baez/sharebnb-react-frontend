@@ -17,15 +17,7 @@ function Homepage() {
   return (
     <div className="Homepage">
       <div className="container text-center">
-        <span>
-          <img
-            src="../images/mountain-logo.webp"
-            alt="mountain logo"
-            className="mountain__logo"
-          />
-        </span>
-
-        <h1 className="mb-4 Homepage-title fade-in">sharebnb</h1>
+        <h1 className="mb-4 Homepage-title">sharebnb</h1>
         {currentUser ? (
           <>
             <h2 className="Homepage-welcome fade-in">
