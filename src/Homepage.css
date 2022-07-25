@@ -40,11 +40,11 @@
   color: var(--primary-color);
   margin: 10px;
   border-radius: 10px;
-  box-shadow: 0px 1px 1.5px 0 var(--green-color);
+  box-shadow: 0px 0.5px 1px 0 var(--white-color);
 }
 
 .btn__home:hover {
-  background-color: var(--green-color);
+  background-color: var(--primary-color);
   border-color: var(--primary-color);
 }
 
